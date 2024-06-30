@@ -2,11 +2,9 @@ Rails.application.routes.draw do
   root 'monsters#index'
 
   get '/monsters', to: 'monsters#index'
-
-  get '/monsters/:name', to: 'monsters#show'
+  get '/monsters/:name', to: 'monsters#show', as: 'monster'
 
   get '/locations', to: 'locations#index'
- 
   get '/locations/:name', to: 'locations#show'
 
   get '/ailments', to: 'ailments#index'
