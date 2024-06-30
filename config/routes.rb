@@ -14,15 +14,7 @@ Rails.application.routes.draw do
   get '/ailments/:name', to: 'ailments#show'
 
   # Resources to provide a Restful path
-  resources :monsters do
-    get '/page/:page', action: :index, on: :collection
-  end
-
-  resources :locations do
-    get '/page/:page', action: :index, on: :collection
-  end
-
-  resources :ailments do
+  resources :monsters, :locations, :ailments do
     get '/page/:page', action: :index, on: :collection
   end
 
