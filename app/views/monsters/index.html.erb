@@ -1,3 +1,6 @@
+<h1>
+  Monsters
+</h1>
 <% if @monsters.any? %>
   <% @monsters.each do |monster| %>
     <p><%= link_to monster.name, monster_path(monster.name) %></p>
