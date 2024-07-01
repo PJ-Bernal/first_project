@@ -1,21 +1,31 @@
-<!-- app/views/monsters/index.html.erb -->
-<div class="flex">
-  
-  <%= form_with url: monsters_path, method: :get, local: true do %>
-  <%= label_tag :search, "Search for Monsters:" %>
-  <%= text_field_tag :search, params[:search] %>
-      
-  <%= label_tag :location, "Location:" %>
-  <%= select_tag :location, options_from_collection_for_select(Location.all, :id, :name, params[:location]), include_blank: true %>
-      
-  <%= label_tag :ailment, "Ailment:" %>
-  <%= select_tag :ailment, options_from_collection_for_select(Ailment.all, :id, :name, params[:ailment]), include_blank: true %>
+<nav class="bg-gray-800 p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <div class="flex items-center">
+      <%= form_with url: monsters_path, method: :get, local: true, class: "flex items-center space-x-4" do %>
+        <div class="flex flex-col">
+          <%= label_tag :search, "Search for Monsters:", class: "block text-gray-300 text-sm font-bold mb-2" %>
+          <%= text_field_tag :search, params[:search], class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        </div>
 
-  <%= submit_tag "Search" %>
-  <% end %>
+        <div class="flex flex-col">
+          <%= label_tag :location, "Location:", class: "block text-gray-300 text-sm font-bold mb-2" %>
+          <%= select_tag :location, options_from_collection_for_select(Location.all, :id, :name, params[:location]), include_blank: true, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        </div>
 
-  <%= link_to 'Locations', locations_path%>
-  <%= link_to 'Ailments', ailments_path%>
+        <div class="flex flex-col">
+          <%= label_tag :ailment, "Ailment:", class: "block text-gray-300 text-sm font-bold mb-2" %>
+          <%= select_tag :ailment, options_from_collection_for_select(Ailment.all, :id, :name, params[:ailment]), include_blank: true, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+        </div>
 
+        <div>
+          <%= submit_tag "Search", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+        </div>
+      <% end %>
+    </div>
 
-</div>
+    <div class="flex space-x-4">
+      <%= link_to 'Locations', locations_path, class: "text-gray-300 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+      <%= link_to 'Ailments', ailments_path, class: "text-gray-300 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    </div>
+  </div>
+</nav>
