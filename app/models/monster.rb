@@ -10,6 +10,17 @@ class Monster < ApplicationRecord
     validates :species, presence: true
     validates :description, presence: true, length: { minimum: 10 }
 
+    
+
+    # def self.ransackable_attributes(auth_object = nil)
+    #   super + %w[name size species description created_at updated_at]
+    # end
+    
+    # def self.ransackable_associations(auth_object = nil)
+    #   super + %w[locations ailments]
+    # end
+
+    # Active admin code required to make the monsters, locations and ailments tables display adequately
     def self.ransackable_associations(auth_object = nil)
         ["ailments", "locations", "monsters_ailments", "monsters_locations"]
     end

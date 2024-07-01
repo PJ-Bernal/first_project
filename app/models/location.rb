@@ -5,6 +5,8 @@ class Location < ApplicationRecord
     validates :name, presence: true, uniqueness: true
     validates :zoneCount, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+    has_one_attached :file
+
     def self.ransackable_associations(auth_object = nil)
         ["monsters", "monsters_locations"]
     end
