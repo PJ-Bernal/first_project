@@ -1,8 +1,8 @@
 class Monster < ApplicationRecord
-    has_many :monsters_locations
+    has_many :monsters_locations, dependent: :destroy
     has_many :locations, through: :monsters_locations
 
-    has_many :monsters_ailments
+    has_many :monsters_ailments, dependent: :destroy
     has_many :ailments, through: :monsters_ailments
 
     validates :name, presence: true, uniqueness: true
