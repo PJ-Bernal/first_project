@@ -23,7 +23,6 @@ ActiveAdmin.register Monster do
     column :updated_at
     column :locations, as: :select, collection: proc { Location.all }
     column :ailments, as: :select, collection: proc { Ailment.all }
-
     actions
   end
 
@@ -58,7 +57,7 @@ ActiveAdmin.register Monster do
       end
       row :file do |ad|
         if monster.file.attached?
-          image_tag url_for(ad.file)
+          image_tag url_for(ad.file), style: 'max-width: 400px; margin:auto; display:block;'
         else
           'No image has been uploaded'
         end

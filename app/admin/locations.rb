@@ -6,6 +6,20 @@ ActiveAdmin.register Location do
   filter :name
   filter :monsters, as: :select, collection: proc { Monster.all }
 
+  index do
+    column :zoneCount
+    column :name
+    column :image_url do |img|
+      if img.file.present?
+        image_tag url_for(img.file), style: 'max-width: 250px; margin:auto; display:block;'
+      else
+        'No image uploaded'
+      end
+    end 
+    column :monsters, as: :select, collection: proc { Monster.all }
+    actions
+  end
+
 
   form do |f|
     f.inputs do
