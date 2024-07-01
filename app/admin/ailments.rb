@@ -2,9 +2,7 @@ ActiveAdmin.register Ailment do
 
   permit_params :name, :description
 
-  def self.ransackable_associations(auth_object = nil)
-    ["monsters", "monsters_ailments"]
-  end
+  
   #
   # or
   #
