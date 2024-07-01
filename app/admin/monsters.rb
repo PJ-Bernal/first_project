@@ -9,6 +9,24 @@ ActiveAdmin.register Monster do
   filter :locations, as: :select, collection: proc { Location.all }
   filter :ailments, as: :select, collection: proc { Ailment.all }
 
+  index do
+    id_column
+    column :name
+    column :image_url do |img|
+      if img.file.present?
+        image_tag url_for(img.file), style: 'max-width: 250px; margin:auto; display:block;'
+      else
+        'No image uploaded'
+      end
+    end 
+    column :created_at
+    column :updated_at
+    column :locations, as: :select, collection: proc { Location.all }
+    column :ailments, as: :select, collection: proc { Ailment.all }
+
+    actions
+  end
+
 
   form do |f|
     f.inputs do

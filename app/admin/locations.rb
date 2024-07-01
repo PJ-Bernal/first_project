@@ -16,12 +16,23 @@ ActiveAdmin.register Location do
     f.actions
   end
 
-  show do
+  show do |monster|
     attributes_table do
       row :zoneCount
       row :name
+      row :'download the image' do |ad|
+        if monster.file.attached?
+          link_to ad.file.filename, rails_blob_path(ad.file, disposition: 'attachment') if ad.file.attached?
+        else
+          'No image has been uploaded'
+        end
+      end
       row :file do |ad|
-        link_to ad.file.filename, rails_blob_path(ad.file, disposition: 'attachment') if ad.file.attached?
+        if monster.file.attached?
+          image_tag url_for(ad.file)
+        else
+          'No image has been uploaded'
+        end
       end
     end
   end
