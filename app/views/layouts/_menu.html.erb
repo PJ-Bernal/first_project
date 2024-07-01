@@ -1,0 +1,21 @@
+<!-- app/views/monsters/index.html.erb -->
+<div class="flex">
+  
+  <%= form_with url: monsters_path, method: :get, local: true do %>
+  <%= label_tag :search, "Search for Monsters:" %>
+  <%= text_field_tag :search, params[:search] %>
+      
+  <%= label_tag :location, "Location:" %>
+  <%= select_tag :location, options_from_collection_for_select(Location.all, :id, :name, params[:location]), include_blank: true %>
+      
+  <%= label_tag :ailment, "Ailment:" %>
+  <%= select_tag :ailment, options_from_collection_for_select(Ailment.all, :id, :name, params[:ailment]), include_blank: true %>
+
+  <%= submit_tag "Search" %>
+  <% end %>
+
+  <%= link_to 'Locations', locations_path%>
+  <%= link_to 'Ailments', ailments_path%>
+
+
+</div>

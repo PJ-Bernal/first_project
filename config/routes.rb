@@ -3,18 +3,15 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'monsters#index'
 
-  get '/monsters', to: 'monsters#index'
-  get '/monsters/:name', to: 'monsters#show', as: 'monster'
+  resources :monsters, param: :name, only: [:index, :show] do
+    get '/page/:page', action: :index, on: :collection
+  end
 
-  get '/locations', to: 'locations#index', as: 'location'
-  get '/locations/:name', to: 'locations#show'
+  resources :locations, param: :name, only: [:index, :show] do
+    get '/page/:page', action: :index, on: :collection
+  end
 
-  get '/ailments', to: 'ailments#index', as: 'ailment'
-
-  get '/ailments/:name', to: 'ailments#show'
-
-  # Resources to provide a Restful path
-  resources :monsters, :locations, :ailments do
+  resources :ailments, param: :name, only: [:index, :show] do
     get '/page/:page', action: :index, on: :collection
   end
 

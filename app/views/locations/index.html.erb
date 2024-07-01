@@ -8,8 +8,8 @@
 <div>
   <ul>
     <% @locations.each do |location| %>
+      <li><%= link_to location.name, location_path(location.name) %></li>
       <li>
-        <%= link_to location['name'], location_path(location['name']) %> - 
         Zone Count: <%= location.zoneCount %>
       </li>
     <% end %>

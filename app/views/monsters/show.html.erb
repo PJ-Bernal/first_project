@@ -30,4 +30,8 @@
   <% end %>
 </ul>
 
-<%= link_to 'Back to Monsters List', root_path %>
+<% if @monster.file.nil?%>
+  <%= image_tag(@monster.file)%>
+<% else %>
+  <p>No image </p>
+<% end %>

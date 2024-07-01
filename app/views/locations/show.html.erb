@@ -12,4 +12,8 @@
   <% end %>
 </ul>
 
-<%= link_to 'Back to Locations List', locations_path %>
+<% if @location.file.nil?%>
+  <%= image_tag(@location.file)%>
+<% else %>
+  <p>No image </p>
+<% end %>

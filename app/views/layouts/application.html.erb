@@ -12,8 +12,12 @@
   </head>
 
   <body>
-    <h1 class="prose container mx-auto mt-10 px-5 font-bold text-3xl"><%= link_to 'Monster Hunter World Media', root_path%></h1>
+    <h1 class="prose container mx-auto mt-10 px-5 font-bold text-3xl">
+      <%= link_to 'Monster Hunter World Media', root_path%>
+      </h1>
     <%= render partial: 'monsters/query'%>
+    <%= render partial: 'layouts/menu'%>
+
     <main class="prose container mx-auto mt-28 px-5">
       <%= yield %>
     </main>
